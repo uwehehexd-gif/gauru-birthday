@@ -68,12 +68,16 @@ button {
 }
 
 /* Gallery */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.gallery img {
+    width: 150px;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin: 10px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px;
 }
-
 /* Countdown */
 #countdown {
     font-size: 20px;

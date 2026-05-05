@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Baby Gauru 🎂💕🌷</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    color: #fff;
+    animation: floatUp 5s linear infinite;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-100vh); opacity: 0;}
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ee9ca7;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.section {
+    display: none;
+    margin-top: 20px;
+}
+
+.active {
+    display: block;
+}
+
+.card {
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+/* Gallery */
+.gallery img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+/* Countdown */
+#countdown {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>🎉 Happy 16th Birthday Mela Bubbudaaa >/////< 💖</h1>
+
+<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+
+<div>
+    <button onclick="showSection('home')">🏠 Home</button>
+    <button onclick="showSection('letter')">💌 Letter</button>
+    <button onclick="showSection('gallery')">📸 Memories</button>
+    <button onclick="showSection('fun')">🎮 Fun</button>
+</div>
+
+<!-- Home -->
+<div id="home" class="section active card">
+    <h2>🌸 Welcome your highness 🌸</h2>
+    <p>Today is all about YOU, mah little baby panda ^///^ 💕</p>
+    <p>You turning 16 just makes the world more beautiful ✨</p>
+    <p id="countdown"></p>
+</div>
+
+<!-- Letter -->
+<div id="letter" class="section card">
+    <h2>💌 A Letter For You</h2>
+    <p>
+    Dear Gauru ji💕🐥,<br><br>
+    You are honestly one of the most special people ever💖<br><br>
+    Being with you feels like happiness, peace and chaos in the best way possible<br><br>
+    I hope this year gives you everything you dream of and more<br><br>
+    Keep smiling, keep shining and never change ✨<br><br>
+    Happy Birthday my sweet little baby angy bird💕
+    </p>
+</div>
+
+<!-- Gallery -->
+<div id="gallery" class="section card">
+    <h2>📸 Our Memories~ 💕</h2>
+    <div class="gallery">
+        <!-- ADD YOUR IMAGES HERE -->
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+</div>
+
+<!-- Fun -->
+<div id="fun" class="section card">
+    <h2>🎮 Fun Zone</h2>
+    <button onclick="showLove()">💖 Surprise</button>
+    <button onclick="compliment()">🌸 Compliment</button>
+    <p id="funText"></p>
+</div>
+
+</div>
+
+<script>
+// Section switch
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+// Music control
+function toggleMusic() {
+    let music = document.getElementById("bgMusic");
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+// Fun text
+function showLove() {
+    document.getElementById("funText").innerHTML = "💖 You are literally my special soul in the entire universe.";
+}
+
+function compliment() {
+    const compliments = [
+        "✨ Your smile = dil me kush kush",
+        "🌸 You're so cutie cutie >////<",
+        "💖 You make everything better",
+        "🌟 I love the way you bully me",
+        "💕 You're really one of a kind"
+    ];
+    let random = compliments[Math.floor(Math.random() * compliments.length)];
+    document.getElementById("funText").innerHTML = random;
+}
+
+// Floating hearts generator
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heartu";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (10 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}, 300);
+
+// Countdown (set her birthday date)
+let birthday = new Date("May 6, 2026 00:00:00").getTime();
+
+setInterval(() => {
+    let now = new Date().getTime();
+    let gap = birthday - now;
+
+    let hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
+    let minutes = Math.floor((gap / (1000 * 60)) % 60);
+    let seconds = Math.floor((gap / 1000) % 60);
+
+    if (gap > 0) {
+        document.getElementById("countdown").innerHTML =
+            `⏳ ${hours}h ${minutes}m ${seconds}s until bubbu ka happie happi bday >w< 💕`;
+    } else {
+        document.getElementById("countdown").innerHTML =
+            "🎉 It's your birthday!!! 💖💕💋💋😽";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
